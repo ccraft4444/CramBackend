@@ -4,7 +4,7 @@
     "server:dev": "nodemon server.js",
     "start:dev": "(npm run dev ) & nodemon server.js",
     "build:backend": "npm install  && npm run build "
-    // "heroku-postbuild": "npx prisma migrate dev"
+    
   },
   "engines": {
     "node": "18.16.1"
