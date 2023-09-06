@@ -3,7 +3,8 @@
     "start": "node server.js",
     "server:dev": "nodemon server.js",
     "start:dev": "(npm run dev ) & nodemon server.js",
-    "build:backend": "npm install  && npm run build "
+    "build:backend": "npm install  && npm run build ",
+    "heroku-postbuild": "npx prisma migrate dev"
   },
   "engines": {
     "node": "18.16.1"
@@ -28,6 +29,7 @@
     "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^3.5.141",
     "prisma": "^4.12.0",
+    "psql": "^0.0.1",
     "react-redux": "^8.0.5",
     "stripe": "^11.18.0"
   },
