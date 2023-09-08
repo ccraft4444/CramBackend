@@ -12,7 +12,7 @@ const routes = require("./routes");
 const fileUpload = require("express-fileupload");
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "*" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "../client", "build")));
