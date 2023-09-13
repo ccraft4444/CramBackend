@@ -91,8 +91,8 @@ router.post("/create-checkout-session", async (req, res) => {
     ],
     mode: "payment",
 
-    success_url: `http://localhost:5173/success?tierIndex=${tierIndex}`, // pass tierIndex in the success_url
-    cancel_url: `http://localhost:5173/purchase`,
+    success_url: `${YOUR_DOMAIN}/success?tierIndex=${tierIndex}`, // pass tierIndex in the success_url
+    cancel_url: `${YOUR_DOMAIN}/purchase`,
   });
 
   res.json(session);
