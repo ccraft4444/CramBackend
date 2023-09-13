@@ -7,7 +7,7 @@ const stripe = require("stripe")(
   "sk_test_51MtxiHFQGhTdTKMrIoEm62jgVUkbMeHBhQlH6qD6OfTk3zOW5lioPvPQhGeKMgTPiUY0mAcfohEfEnRvyqxcveJI005zotch9J"
 );
 const endpointSecret = "whsec_7m9Is3TaNrNomxgGNpbQOtovxZxmFN4u";
-const YOUR_DOMAIN = "http://localhost:4242";
+const YOUR_DOMAIN = "https://cram-frontend-xi.vercel.app/";
 
 // Add CORS middleware
 router.use((req, res, next) => {
