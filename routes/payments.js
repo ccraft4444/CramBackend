@@ -49,29 +49,6 @@ const tiers = [
   },
 ];
 
-//  price id's: 10: price_1MvpbeFQGhTdTKMrYIpCsYGz
-// 5: price_1MvpbIFQGhTdTKMrmjHGF4h2
-// 1: price_1MvpaqFQGhTdTKMrJgYDYhON
-// ${YOUR_DOMAIN}?canceled=true
-
-// router.post("/create-checkout-session", async (req, res) => {
-//   const { priceId, tierIndex } = req.body;
-//   console.log("priceId in back", priceId);
-//   const session = await stripe.checkout.sessions.create({
-//     line_items: [
-//       {
-//         price: priceId,
-//         quantity: 1,
-//       },
-//     ],
-//     mode: "payment",
-//     success_url: `http://localhost:5174/success?tierIndex=${tierIndex}`, // pass tierIndex in the success_url
-//     cancel_url: `http://localhost:5174/purchase`,
-//   });
-
-//   res.json(session);
-// });
-
 router.post("/create-checkout-session", async (req, res) => {
   const { priceId, tierIndex, userId } = req.body;
   console.log("userId in back chek sesh:", userId, "tierIndex:", tierIndex);
