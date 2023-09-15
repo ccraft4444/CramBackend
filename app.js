@@ -28,9 +28,9 @@ app.get("/health", (req, res) => {
 // api route
 app.use("/routes", routes);
 
-// app.use((req, res, next) => {
-//   res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
-// });
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
+});
 
 app.use((error, req, res, next) => {
   res.status(500).send(error);
