@@ -161,15 +161,21 @@ router.use("/webhook", async (req, res) => {
   const event = req.body;
   switch (event.type) {
     case "payment_intent.succeeded": {
-      console.log("payment successful");
-      const paymentIntent = event.data.object;
-      console.log("paymentIntent.metadata:", paymentIntent.metadata);
-      const userId = parseInt(paymentIntent.metadata.userId);
-      const tierIndex = parseInt(paymentIntent.metadata.tierIndex);
+      try {
+        console.log("Webhook event received:", event.type);
+        console.log("payment successful");
+        const paymentIntent = event.data.object;
+        console.log("paymentIntent.metadata:", paymentIntent.metadata);
+        const userId = parseInt(paymentIntent.metadata.userId);
+        const tierIndex = parseInt(paymentIntent.metadata.tierIndex);
 
-      console.log("user id, tier index in hook", userId, tierIndex);
-      const tier = tiers[tierIndex];
-      updateUserCredits(userId, tier.credits);
+        console.log("user id, tier index in hook", userId, tierIndex);
+        const tier = tiers[tierIndex];
+        updateUserCredits(userId, tier.credits);
+      } catch (error) {
+        console.error("Error processing payment:", error);
+        return res.status(500).end(); // Internal Server Error
+      }
 
       break;
     }
