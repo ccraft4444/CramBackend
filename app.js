@@ -3,6 +3,7 @@ const cors = require("cors");
 const express = require("express");
 const path = require("path");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const app = express();
 const morgan = require("morgan");
@@ -28,10 +29,18 @@ app.get("/health", (req, res) => {
 // api route
 app.use("/routes", routes);
 
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname));
+const frontendProxy = createProxyMiddleware({
+  target: "https://cram-frontend-xi.vercel.app/",
+  changeOrigin: true, // Changes the origin of the request to match the target URL
 });
+
+app.use("*", frontendProxy);
+
+// app.use((req, res, next) => {
+//   res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
+// });
 // "./client/dist", "index.html"
+
 app.use((error, req, res, next) => {
   res.status(500).send(error);
 });
