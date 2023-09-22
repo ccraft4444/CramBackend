@@ -16,7 +16,8 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname, "../client", "build")));
+
+// app.use(express.static(path.join(__dirname, "../client", "build")));
 // app.use(express.static(path.join(__dirname, "client", "src")));
 // app.use(express.static(path.join(__dirname, "./client", "dist")));
 app.use(cookieParser(COOKIE_SECRET));
