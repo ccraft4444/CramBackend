@@ -158,6 +158,7 @@ const verify = (req, _, buf, encoding) => {
 // );
 
 router.use("/webhook", async (req, res) => {
+  console.log("webhook endpoint reached");
   const event = req.body;
   switch (event.type) {
     case "payment_intent.succeeded": {
