@@ -161,6 +161,7 @@ router.use("/webhook", async (req, res) => {
   const event = req.body;
   switch (event.type) {
     case "payment_intent.succeeded": {
+      console.log("before try catch");
       try {
         console.log("Webhook event received:", event.type);
         console.log("payment successful");
