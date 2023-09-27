@@ -183,6 +183,7 @@ router.use("/webhook", async (req, res) => {
     }
 
     default:
+      console.log(event.type);
       return res.status(400).end();
   }
   res.json({ received: true });
